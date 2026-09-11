@@ -24,6 +24,8 @@ async function createUser(userData) {
   const user = {
     name: userData.name.trim(),
     email: userData.email.toLowerCase().trim(),
+    phone: userData.phone ? userData.phone.trim() : "",
+address: userData.address ? userData.address.trim() : "",
     passwordHash,
     role: userData.role || "volunteer",
     createdAt: new Date(),

@@ -1,6 +1,8 @@
+
 const express = require("express");
 
 require("dotenv").config();
+const cors = require("cors");
 
 const {
   connectDatabase,
@@ -10,16 +12,32 @@ const {
 const {
   initializeUserCollection
 } = require("./models/userModel");
+const {
+  initializeSubcontractorCollection
+} = require("./models/subcontractorModel");
+const subcontractorAdminRoutes = require("./routes/subcontractorAdminRoutes");
 
 const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
+const subcontractorRoutes = require("./routes/subcontractorRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "http://localhost:5174"
+  ]
+}));
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/subcontractors", subcontractorRoutes);
+app.use(
+  "/api/admin/subcontractors",
+  subcontractorAdminRoutes
+);
 
 app.get("/health", async (req, res) => {
   try {
@@ -46,7 +64,10 @@ async function startServer() {
   try {
     await connectDatabase();
     await initializeUserCollection();
-    console.log("Users collection initialized");
+await initializeSubcontractorCollection();
+
+console.log("Users collection initialized");
+console.log("Subcontractor collection initialized");
     
     app.listen(PORT, () => {
       console.log(`Backend running on http://localhost:${PORT}`);
