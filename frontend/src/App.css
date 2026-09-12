@@ -328,3 +328,1059 @@
     text-align: center;
   }
 }
+/* --------------------------------------------------
+   Account / access page
+-------------------------------------------------- */
+
+.account-page,
+.subcontractor-page {
+  width: min(100% - 2rem, 1120px);
+  margin: 0 auto;
+  padding: 1.5rem 0 3rem;
+}
+
+.account-hero,
+.subcontractor-hero {
+  margin-bottom: 1.5rem;
+  padding: 1.75rem;
+  border: 1px solid #dbe3ee;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at top right, rgba(20, 184, 166, 0.13), transparent 38%),
+    #ffffff;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+}
+
+.account-eyebrow,
+.subcontractor-eyebrow {
+  margin: 0 0 0.45rem;
+  color: #0f766e;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.account-hero h1,
+.subcontractor-hero h1 {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(1.7rem, 3vw, 2.35rem);
+  line-height: 1.15;
+}
+
+.account-hero p:last-child,
+.subcontractor-hero p:last-child {
+  max-width: 680px;
+  margin: 0.7rem 0 0;
+  color: #475569;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.account-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.75fr);
+  gap: 1.25rem;
+}
+
+.account-card,
+.subcontractor-card,
+.subcontractor-form-card {
+  border: 1px solid #dbe3ee;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
+}
+
+.account-card,
+.subcontractor-card {
+  padding: 1.5rem;
+}
+
+.account-card h2,
+.subcontractor-card h2,
+.subcontractor-form-card h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+
+.account-card > p,
+.subcontractor-card > p {
+  margin: 0.55rem 0 0;
+  color: #64748b;
+  line-height: 1.55;
+}
+
+.account-details {
+  display: grid;
+  gap: 0;
+  margin: 1.25rem 0 0;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.account-detail {
+  display: grid;
+  grid-template-columns: 145px minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.account-detail:last-child {
+  border-bottom: 0;
+}
+
+.account-detail dt {
+  color: #64748b;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.account-detail dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.account-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+
+/* --------------------------------------------------
+   Shared buttons and form controls
+-------------------------------------------------- */
+
+.page-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 750;
+  line-height: 1.2;
+  padding: 0.7rem 1rem;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.page-button:active {
+  transform: translateY(1px);
+}
+
+.page-button-primary {
+  background: #0f766e;
+  border-color: #0f766e;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(15, 118, 110, 0.2);
+}
+
+.page-button-primary:hover:not(:disabled) {
+  background: #115e59;
+  border-color: #115e59;
+}
+
+.page-button-secondary {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+
+.page-button-secondary:hover:not(:disabled) {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+.page-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.page-button:focus-visible,
+.subcontractor-form input:focus-visible,
+.subcontractor-form select:focus-visible,
+.subcontractor-form textarea:focus-visible {
+  outline: 3px solid #38bdf8;
+  outline-offset: 3px;
+}
+
+
+/* --------------------------------------------------
+   Subcontractor application page
+-------------------------------------------------- */
+
+.subcontractor-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.75fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.subcontractor-form-card {
+  padding: 1.5rem;
+}
+
+.subcontractor-form-card > p {
+  margin: 0.55rem 0 1.4rem;
+  color: #64748b;
+  line-height: 1.55;
+}
+
+.subcontractor-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.form-field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.form-field-full {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  color: #334155;
+  font-size: 0.92rem;
+  font-weight: 750;
+}
+
+.form-field label span {
+  color: #dc2626;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #0f172a;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.4;
+  padding: 0.72rem 0.8rem;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.form-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: #94a3b8;
+}
+
+.form-field input:hover,
+.form-field select:hover,
+.form-field textarea:hover {
+  border-color: #94a3b8;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: #0f766e;
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
+  outline: none;
+}
+
+.form-help {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.form-error {
+  margin: 0;
+  color: #b91c1c;
+  font-size: 0.86rem;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+
+/* --------------------------------------------------
+   Application status panel
+-------------------------------------------------- */
+
+.application-status {
+  padding: 1.35rem;
+}
+
+.application-status-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.application-status h2 {
+  margin: 0;
+}
+
+.application-status > p {
+  margin: 0.55rem 0 0;
+  color: #64748b;
+  line-height: 1.55;
+}
+
+.status-badge {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  padding: 0.48rem 0.65rem;
+  text-transform: uppercase;
+}
+
+.status-badge-pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge-approved {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-badge-rejected {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.status-badge-none {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.application-status-list {
+  display: grid;
+  gap: 0.8rem;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.application-status-list li {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  color: #475569;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.application-status-list li::before {
+  display: grid;
+  place-items: center;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ccfbf1;
+  color: #0f766e;
+  content: "✓";
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+
+.review-note {
+  margin: 1.2rem 0 0;
+  padding: 0.9rem 1rem;
+  border-left: 4px solid #14b8a6;
+  border-radius: 0 10px 10px 0;
+  background: #f0fdfa;
+  color: #134e4a;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+
+/* --------------------------------------------------
+   Mobile layout
+-------------------------------------------------- */
+
+@media (max-width: 780px) {
+  .account-page,
+  .subcontractor-page {
+    width: min(100% - 1.25rem, 1120px);
+    padding-top: 1rem;
+  }
+
+  .account-hero,
+  .subcontractor-hero,
+  .account-card,
+  .subcontractor-card,
+  .subcontractor-form-card {
+    padding: 1.15rem;
+    border-radius: 14px;
+  }
+
+  .account-grid,
+  .subcontractor-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .account-detail {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}
+
+@media (max-width: 440px) {
+  .application-status-header {
+    flex-direction: column;
+  }
+
+  .account-actions,
+  .subcontractor-form .page-button {
+    width: 100%;
+  }
+
+  .account-actions .page-button {
+    flex: 1 1 100%;
+  }
+}
+
+/* Account and subcontractor pages */
+.account-page,
+.subcontractor-page {
+  width: min(100% - 2rem, 1120px);
+  margin: 0 auto;
+  padding: 1.5rem 0 3rem;
+}
+
+.account-hero,
+.subcontractor-hero {
+  margin-bottom: 1.5rem;
+  padding: 1.75rem;
+  border: 1px solid #dbe3ee;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at top right, rgba(20, 184, 166, 0.13), transparent 38%),
+    #ffffff;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+}
+
+.account-eyebrow,
+.subcontractor-eyebrow {
+  margin: 0 0 0.45rem;
+  color: #0f766e;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.account-hero h1,
+.subcontractor-hero h1 {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(1.7rem, 3vw, 2.35rem);
+  line-height: 1.15;
+}
+
+.account-hero p:last-child,
+.subcontractor-hero p:last-child {
+  max-width: 680px;
+  margin: 0.7rem 0 0;
+  color: #475569;
+  line-height: 1.65;
+}
+
+.account-grid,
+.subcontractor-layout {
+  display: grid;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.account-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.75fr);
+}
+
+.subcontractor-layout {
+  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.75fr);
+}
+
+.account-card,
+.subcontractor-card,
+.subcontractor-form-card {
+  padding: 1.5rem;
+  border: 1px solid #dbe3ee;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
+}
+
+.account-card h2,
+.subcontractor-card h2,
+.subcontractor-form-card h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 1.2rem;
+}
+
+.account-card > p,
+.subcontractor-card > p,
+.subcontractor-form-card > p {
+  margin: 0.55rem 0 1.25rem;
+  color: #64748b;
+  line-height: 1.55;
+}
+
+.account-details {
+  display: grid;
+  margin: 1.25rem 0 0;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.account-detail {
+  display: grid;
+  grid-template-columns: 145px minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.account-detail:last-child {
+  border-bottom: 0;
+}
+
+.account-detail dt {
+  color: #64748b;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.account-detail dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.account-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.page-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 750;
+  padding: 0.7rem 1rem;
+}
+
+.page-button-primary {
+  background: #0f766e;
+  border-color: #0f766e;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(15, 118, 110, 0.2);
+}
+
+.page-button-primary:hover:not(:disabled) {
+  background: #115e59;
+  border-color: #115e59;
+}
+
+.page-button-secondary {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+
+.page-button-secondary:hover:not(:disabled) {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+.page-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.subcontractor-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.form-field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.form-field-full {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  color: #334155;
+  font-size: 0.92rem;
+  font-weight: 750;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #0f172a;
+  font: inherit;
+  line-height: 1.4;
+  padding: 0.72rem 0.8rem;
+}
+
+.form-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: #0f766e;
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
+  outline: none;
+}
+
+.page-button:focus-visible,
+.form-field input:focus-visible,
+.form-field select:focus-visible,
+.form-field textarea:focus-visible {
+  outline: 3px solid #38bdf8;
+  outline-offset: 3px;
+}
+
+.application-status {
+  padding: 1.35rem;
+}
+
+.application-status-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.status-badge {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  padding: 0.48rem 0.65rem;
+  text-transform: uppercase;
+}
+
+.status-badge-pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge-approved {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-badge-rejected {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.status-badge-none {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.application-status-list {
+  display: grid;
+  gap: 0.8rem;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.application-status-list li {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  color: #475569;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.application-status-list li::before {
+  display: grid;
+  place-items: center;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ccfbf1;
+  color: #0f766e;
+  content: "✓";
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+
+.review-note {
+  margin: 1.2rem 0 0;
+  padding: 0.9rem 1rem;
+  border-left: 4px solid #14b8a6;
+  border-radius: 0 10px 10px 0;
+  background: #f0fdfa;
+  color: #134e4a;
+  line-height: 1.55;
+}
+
+@media (max-width: 780px) {
+  .account-page,
+  .subcontractor-page {
+    width: min(100% - 1.25rem, 1120px);
+    padding-top: 1rem;
+  }
+
+  .account-hero,
+  .subcontractor-hero,
+  .account-card,
+  .subcontractor-card,
+  .subcontractor-form-card {
+    padding: 1.15rem;
+    border-radius: 14px;
+  }
+
+  .account-grid,
+  .subcontractor-layout,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .account-detail {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}
+
+@media (max-width: 440px) {
+  .application-status-header {
+    flex-direction: column;
+  }
+
+  .account-actions .page-button,
+  .subcontractor-form .page-button {
+    width: 100%;
+  }
+}
+/* Account login and registration form */
+.auth-panel .auth-form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.auth-panel .auth-form label {
+  display: grid;
+  gap: 0.45rem;
+  color: #334155;
+  font-size: 0.92rem;
+  font-weight: 750;
+}
+
+.auth-panel .auth-form input {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #0f172a;
+  font: inherit;
+  line-height: 1.4;
+  padding: 0.72rem 0.8rem;
+}
+
+.auth-panel .auth-form input:focus {
+  border-color: #0f766e;
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
+  outline: none;
+}
+
+.auth-panel .text-button {
+  margin-top: 1rem;
+}
+/* Account and subcontractor forms */
+.account-page,
+.subcontractor-page {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.account-form-card,
+.subcontractor-form-card {
+  width: min(100%, 820px);
+  margin: 0 auto;
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  border: 1px solid #dbe3ee;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+}
+
+.account-form-card h2,
+.subcontractor-form-card h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(1.55rem, 3vw, 2.1rem);
+  line-height: 1.2;
+}
+
+.account-intro,
+.subcontractor-intro {
+  max-width: 660px;
+  margin: 0.75rem 0 1.5rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.styled-form {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+.form-field {
+  display: grid;
+  gap: 0.48rem;
+  color: #334155;
+  font-size: 0.93rem;
+  font-weight: 700;
+}
+
+.form-field-full {
+  grid-column: 1 / -1;
+}
+
+.form-field input,
+.form-field textarea {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #0f172a;
+  font: inherit;
+  font-weight: 400;
+  line-height: 1.4;
+  padding: 0.78rem 0.85rem;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.form-field textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: #94a3b8;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: #0f766e;
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.17);
+  outline: none;
+}
+
+.form-field input:focus-visible,
+.form-field textarea:focus-visible,
+.page-button:focus-visible,
+.account-switch-button:focus-visible {
+  outline: 3px solid #38bdf8;
+  outline-offset: 3px;
+}
+
+.required-mark {
+  color: #dc2626;
+}
+
+.form-note {
+  margin: -0.2rem 0 0;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.page-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border-radius: 10px;
+  font-weight: 750;
+  padding: 0.75rem 1.05rem;
+}
+
+.page-button-primary {
+  border: 1px solid #0f766e;
+  background: #0f766e;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.2);
+}
+
+.page-button-primary:hover:not(:disabled) {
+  border-color: #115e59;
+  background: #115e59;
+}
+
+.page-button-secondary {
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #334155;
+}
+
+.page-button-secondary:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+
+.page-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.submit-application-button {
+  justify-self: start;
+  min-width: 190px;
+}
+
+.account-switch-button {
+  margin-top: 1rem;
+}
+
+.account-details {
+  display: grid;
+  margin: 1.5rem 0 0;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.account-detail {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.account-detail:last-child {
+  border-bottom: 0;
+}
+
+.account-detail dt {
+  color: #64748b;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.account-detail dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.account-actions {
+  margin-top: 1.25rem;
+}
+
+@media (max-width: 640px) {
+  .account-page,
+  .subcontractor-page {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-field-full {
+    grid-column: auto;
+  }
+
+  .submit-application-button {
+    justify-self: stretch;
+    width: 100%;
+  }
+
+  .account-detail {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}

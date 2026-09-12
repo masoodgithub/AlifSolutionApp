@@ -205,82 +205,126 @@ async function handleSubcontractorSubmit(event) {
           <a href="#contact">Contact Us</a>
         </nav>
       </header>
-<section className="auth-panel section" id="account">
-  {currentUser ? (
-    <div>
-      <p className="eyebrow">Signed in</p>
-      <h2>Welcome, {currentUser.name || currentUser.email}</h2>
-      <p>Account role: {currentUser.role}</p>
-      <button className="button" type="button" onClick={handleLogout}>
-        Log out
-      </button>
-    </div>
-  ) : (
-    <div>
-      <p className="eyebrow">Account access</p>
-      <h2>{authMode === "login" ? "Log in" : "Register"}</h2>
+<section className="auth-panel section account-page" id="account">
+  <div className="account-form-card">
+    {currentUser ? (
+      <>
+        <p className="eyebrow">Account access</p>
+        <h2>Welcome, {currentUser.name || currentUser.email}</h2>
+        <p className="account-intro">
+          You are signed in to your ALIF account.
+        </p>
 
-      <form className="auth-form" onSubmit={handleAuthSubmit}>
-        {authMode === "register" && (
-          <label>
-            Name
+        <dl className="account-details">
+          <div className="account-detail">
+            <dt>Name</dt>
+            <dd>{currentUser.name || "Not provided"}</dd>
+          </div>
+
+          <div className="account-detail">
+            <dt>Email</dt>
+            <dd>{currentUser.email}</dd>
+          </div>
+
+          <div className="account-detail">
+            <dt>Account role</dt>
+            <dd>{currentUser.role}</dd>
+          </div>
+        </dl>
+
+        <div className="account-actions">
+          <button
+            className="button page-button page-button-secondary"
+            type="button"
+            onClick={handleLogout}
+          >
+            Log out
+          </button>
+        </div>
+      </>
+    ) : (
+      <>
+        <p className="eyebrow">Account access</p>
+        <h2>{authMode === "login" ? "Log in to your account" : "Create an account"}</h2>
+        <p className="account-intro">
+          {authMode === "login"
+            ? "Enter your email address and password to continue."
+            : "Complete the form below to register for an ALIF account."}
+        </p>
+
+        <form className="auth-form styled-form" onSubmit={handleAuthSubmit}>
+          {authMode === "register" && (
+            <label className="form-field">
+              Full name
+              <input
+                name="name"
+                value={authForm.name}
+                onChange={handleAuthInput}
+                placeholder="Enter your full name"
+                required
+              />
+            </label>
+          )}
+
+          <label className="form-field">
+            Email address
             <input
-              name="name"
-              value={authForm.name}
+              type="email"
+              name="email"
+              value={authForm.email}
               onChange={handleAuthInput}
+              placeholder="you@example.com"
               required
             />
           </label>
-        )}
 
-        <label>
-          Email
-          <input
-            type="email"
-            name="email"
-            value={authForm.email}
-            onChange={handleAuthInput}
-            required
-          />
-        </label>
+          <label className="form-field">
+            Password
+            <input
+              type="password"
+              name="password"
+              value={authForm.password}
+              onChange={handleAuthInput}
+              placeholder="At least 8 characters"
+              minLength={8}
+              required
+            />
+          </label>
 
-        <label>
-          Password
-          <input
-            type="password"
-            name="password"
-            value={authForm.password}
-            onChange={handleAuthInput}
-            minLength={8}
-            required
-          />
-        </label>
+          <button
+            className="button page-button page-button-primary"
+            type="submit"
+            disabled={authLoading}
+          >
+            {authLoading
+              ? "Please wait..."
+              : authMode === "login"
+                ? "Log in"
+                : "Create account"}
+          </button>
+        </form>
 
-        <button className="button" type="submit" disabled={authLoading}>
-          {authLoading
-            ? "Please wait..."
-            : authMode === "login"
-              ? "Log in"
-              : "Register"}
+        <button
+          className="text-button account-switch-button"
+          type="button"
+          onClick={() => {
+            setAuthMode(authMode === "login" ? "register" : "login");
+            setAuthMessage("");
+          }}
+        >
+          {authMode === "login"
+            ? "Need an account? Register here"
+            : "Already have an account? Log in"}
         </button>
-      </form>
 
-      <button
-        className="text-button"
-        type="button"
-        onClick={() => {
-          setAuthMode(authMode === "login" ? "register" : "login");
-          setAuthMessage("");
-        }}
-      >
-        {authMode === "login"
-          ? "Need an account? Register"
-          : "Already registered? Log in"}
-      </button>
-
-      {authMessage && <p className="auth-message">{authMessage}</p>}
-    </div>
-  )}
+        {authMessage && (
+          <p className="auth-message" role="status">
+            {authMessage}
+          </p>
+        )}
+      </>
+    )}
+  </div>
 </section>
       <main>
         <section id="home" className="hero section">
@@ -331,118 +375,135 @@ async function handleSubcontractorSubmit(event) {
           </p>
         </section>
 
-        <section id="subcontractor" className="section content-section">
-  <p className="eyebrow">Subcontractor Registration</p>
-  <h2>Work with ALIF</h2>
-  <p>
-    Submit your business information for review by the ALIF team.
-  </p>
+        <section
+  id="subcontractor"
+  className="section content-section subcontractor-page"
+>
+  <div className="subcontractor-form-card">
+    <p className="eyebrow">Subcontractor registration</p>
+    <h2>Work with ALIF</h2>
+    <p className="subcontractor-intro">
+      Complete this application form to introduce your company to the ALIF
+      team. We will review your submission and contact you about next steps.
+    </p>
 
-  <form
-    className="subcontractor-form"
-    onSubmit={handleSubcontractorSubmit}
-  >
-    <label>
-      Company name
-      <input
-        value={subcontractorForm.companyName}
-        onChange={(event) =>
-          setSubcontractorForm({
-            ...subcontractorForm,
-            companyName: event.target.value,
-          })
-        }
-        required
-      />
-    </label>
-
-    <label>
-      Contact name
-      <input
-        value={subcontractorForm.contactName}
-        onChange={(event) =>
-          setSubcontractorForm({
-            ...subcontractorForm,
-            contactName: event.target.value,
-          })
-        }
-        required
-      />
-    </label>
-
-    <label>
-      Email
-      <input
-        type="email"
-        value={subcontractorForm.email}
-        onChange={(event) =>
-          setSubcontractorForm({
-            ...subcontractorForm,
-            email: event.target.value,
-          })
-        }
-        required
-      />
-    </label>
-
-    <label>
-      Phone
-      <input
-        type="tel"
-        value={subcontractorForm.phone}
-        onChange={(event) =>
-          setSubcontractorForm({
-            ...subcontractorForm,
-            phone: event.target.value,
-          })
-        }
-        required
-      />
-    </label>
-
-    <label>
-      Business address
-      <textarea
-        rows="3"
-        value={subcontractorForm.address}
-        onChange={(event) =>
-          setSubcontractorForm({
-            ...subcontractorForm,
-            address: event.target.value,
-          })
-        }
-        required
-      />
-    </label>
-
-    <label>
-      Services offered
-      <input
-        placeholder="Example: Lawn care, Cleaning services"
-        value={subcontractorForm.services}
-        onChange={(event) =>
-          setSubcontractorForm({
-            ...subcontractorForm,
-            services: event.target.value,
-          })
-        }
-      />
-    </label>
-
-    <button
-      className="button"
-      type="submit"
-      disabled={subcontractorLoading}
+    <form
+      className="subcontractor-form styled-form"
+      onSubmit={handleSubcontractorSubmit}
     >
-      {subcontractorLoading
-        ? "Submitting..."
-        : "Submit application"}
-    </button>
-  </form>
+      <div className="form-grid">
+        <label className="form-field">
+          Company name <span className="required-mark">*</span>
+          <input
+            value={subcontractorForm.companyName}
+            onChange={(event) =>
+              setSubcontractorForm({
+                ...subcontractorForm,
+                companyName: event.target.value,
+              })
+            }
+            placeholder="Enter your company name"
+            required
+          />
+        </label>
 
-  {subcontractorMessage && (
-    <p className="auth-message">{subcontractorMessage}</p>
-  )}
+        <label className="form-field">
+          Contact name <span className="required-mark">*</span>
+          <input
+            value={subcontractorForm.contactName}
+            onChange={(event) =>
+              setSubcontractorForm({
+                ...subcontractorForm,
+                contactName: event.target.value,
+              })
+            }
+            placeholder="Enter the primary contact name"
+            required
+          />
+        </label>
+
+        <label className="form-field">
+          Business email <span className="required-mark">*</span>
+          <input
+            type="email"
+            value={subcontractorForm.email}
+            onChange={(event) =>
+              setSubcontractorForm({
+                ...subcontractorForm,
+                email: event.target.value,
+              })
+            }
+            placeholder="you@company.com"
+            required
+          />
+        </label>
+
+        <label className="form-field">
+          Phone number <span className="required-mark">*</span>
+          <input
+            type="tel"
+            value={subcontractorForm.phone}
+            onChange={(event) =>
+              setSubcontractorForm({
+                ...subcontractorForm,
+                phone: event.target.value,
+              })
+            }
+            placeholder="(000) 000-0000"
+            required
+          />
+        </label>
+
+        <label className="form-field form-field-full">
+          Business address <span className="required-mark">*</span>
+          <textarea
+            rows="3"
+            value={subcontractorForm.address}
+            onChange={(event) =>
+              setSubcontractorForm({
+                ...subcontractorForm,
+                address: event.target.value,
+              })
+            }
+            placeholder="Street address, city, state, ZIP code"
+            required
+          />
+        </label>
+
+        <label className="form-field form-field-full">
+          Services offered
+          <input
+            placeholder="Example: Lawn care, cleaning, inspections, repairs"
+            value={subcontractorForm.services}
+            onChange={(event) =>
+              setSubcontractorForm({
+                ...subcontractorForm,
+                services: event.target.value,
+              })
+            }
+          />
+        </label>
+      </div>
+
+      <p className="form-note">
+        Fields marked with <span className="required-mark">*</span> are required.
+      </p>
+
+      <button
+        className="button page-button page-button-primary submit-application-button"
+        type="submit"
+        disabled={subcontractorLoading}
+      >
+        {subcontractorLoading ? "Submitting..." : "Submit application"}
+      </button>
+    </form>
+
+    {subcontractorMessage && (
+      <p className="auth-message" role="status">
+        {subcontractorMessage}
+      </p>
+    )}
+  </div>
 </section>
 
         <section id="reviews" className="section highlight-section">
