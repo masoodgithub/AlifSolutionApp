@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import "./App.css";
 const API_BASE_URL = "http://localhost:5000";
 
 function App() {
@@ -23,6 +23,31 @@ const [subcontractorForm, setSubcontractorForm] = useState({
 
 const [subcontractorMessage, setSubcontractorMessage] = useState("");
 const [subcontractorLoading, setSubcontractorLoading] = useState(false);
+const [pendingApplications, setPendingApplications] = useState([]);
+const [approvedApplications, setApprovedApplications] = useState([]);
+const [adminApplicationsLoading, setAdminApplicationsLoading] =
+  useState(false);
+const [adminApplicationsMessage, setAdminApplicationsMessage] =
+  useState("");
+
+useEffect(() => {
+  const goHomeOnLoad = () => {
+    window.history.replaceState(
+      null,
+      "",
+      `${window.location.pathname}${window.location.search}`
+    );
+
+    document.getElementById("home")?.scrollIntoView({
+      behavior: "auto",
+      block: "start",
+    });
+  };
+
+  const timer = window.setTimeout(goHomeOnLoad, 50);
+
+  return () => window.clearTimeout(timer);
+}, []);
 
   useEffect(() => {
     const token = localStorage.getItem("alif_token");
@@ -30,6 +55,12 @@ const [subcontractorLoading, setSubcontractorLoading] = useState(false);
     if (!token) {
       return;
     }
+
+    useEffect(() => {
+  if (currentUser?.role === "admin") {
+    loadAdminApplications();
+  }
+}, [currentUser]);
 
     fetch(`${API_BASE_URL}/api/auth/me`, {
       headers: {
@@ -187,10 +218,60 @@ async function handleSubcontractorSubmit(event) {
     setSubcontractorLoading(false);
   }
 }
+async function loadAdminApplications() {
+  const token = localStorage.getItem("alif_token");
+
+  if (!token || currentUser?.role !== "admin") {
+    return;
+  }
+
+  setAdminApplicationsLoading(true);
+  setAdminApplicationsMessage("");
+
+  try {
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+
+    const [pendingResponse, approvedResponse] = await Promise.all([
+      fetch(
+        `${API_BASE_URL}/api/subcontractor-admin?status=pending`,
+        { headers }
+      ),
+      fetch(
+        `${API_BASE_URL}/api/subcontractor-admin?status=approved`,
+        { headers }
+      ),
+    ]);
+
+    const pendingData = await pendingResponse.json();
+    const approvedData = await approvedResponse.json();
+
+    if (!pendingResponse.ok) {
+      throw new Error(
+        pendingData.message || "Unable to load pending applications."
+      );
+    }
+
+    if (!approvedResponse.ok) {
+      throw new Error(
+        approvedData.message || "Unable to load approved companies."
+      );
+    }
+
+    setPendingApplications(pendingData.applications || []);
+    setApprovedApplications(approvedData.applications || []);
+  } catch (error) {
+    setAdminApplicationsMessage(error.message);
+  } finally {
+    setAdminApplicationsLoading(false);
+  }
+}
+
   return (
     <div className="app">
       <header className="site-header">
-        <a className="logo" href="#home" aria-label="ALIF home">
+        <a className="logo" href="#home" aria-label="Alif home">
           ALIF
         </a>
 
@@ -350,7 +431,7 @@ async function handleSubcontractorSubmit(event) {
           </p>
         </section>
 
-        <section id="services" className="section services-section">
+        <section id="services" className="section services-section p2">
           <p className="eyebrow">What We Do</p>
           <h2>Our services</h2>
 
@@ -393,8 +474,10 @@ async function handleSubcontractorSubmit(event) {
     >
       <div className="form-grid">
         <label className="form-field">
-          Company name <span className="required-mark">*</span>
-          <input
+  <span className="field-label">
+    Company name <span className="required-mark">*</span>
+  </span>
+  <input
             value={subcontractorForm.companyName}
             onChange={(event) =>
               setSubcontractorForm({
@@ -408,8 +491,10 @@ async function handleSubcontractorSubmit(event) {
         </label>
 
         <label className="form-field">
-          Contact name <span className="required-mark">*</span>
-          <input
+  <span className="field-label">
+    Contact name<span className="required-mark">*</span>
+  </span>
+  <input
             value={subcontractorForm.contactName}
             onChange={(event) =>
               setSubcontractorForm({
@@ -423,8 +508,10 @@ async function handleSubcontractorSubmit(event) {
         </label>
 
         <label className="form-field">
-          Business email <span className="required-mark">*</span>
-          <input
+  <span className="field-label">
+    Business email <span className="required-mark">*</span>
+  </span>
+  <input
             type="email"
             value={subcontractorForm.email}
             onChange={(event) =>
@@ -438,9 +525,11 @@ async function handleSubcontractorSubmit(event) {
           />
         </label>
 
-        <label className="form-field">
-          Phone number <span className="required-mark">*</span>
-          <input
+       <label className="form-field">
+  <span className="field-label">
+    Phone number <span className="required-mark">*</span>
+  </span>
+  <input
             type="tel"
             value={subcontractorForm.phone}
             onChange={(event) =>
@@ -455,8 +544,10 @@ async function handleSubcontractorSubmit(event) {
         </label>
 
         <label className="form-field form-field-full">
-          Business address <span className="required-mark">*</span>
-          <textarea
+  <span className="field-label">
+    Business address <span className="required-mark">*</span>
+  </span>
+  <textarea
             rows="3"
             value={subcontractorForm.address}
             onChange={(event) =>
@@ -519,7 +610,7 @@ async function handleSubcontractorSubmit(event) {
           </button>
         </section>
 
-        <section id="contact" className="section contact-section">
+        <section id="contact" className="section contact-section p2">
           <p className="eyebrow">Contact Us</p>
           <h2>Let’s discuss your property needs</h2>
           <p>21785 Baldwin Sq, Sterling, Virginia, USA</p>

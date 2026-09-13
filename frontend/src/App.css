@@ -1,1340 +1,579 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+/* =========================================================
+   ALIF Solution & Consulting Service LLC
+   Application stylesheet
+========================================================= */
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+:root {
+  --primary: #0d6efd;
+  --primary-hover: #0b5ed7;
+  --primary-border: #0a58ca;
+  --primary-focus: rgba(13, 110, 253, 0.25);
+
+  --white: #ffffff;
+  --page-bg: #f8f9fa;
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #6c757d;
+  --gray-700: #495057;
+  --gray-800: #343a40;
+  --gray-900: #212529;
+
+  --border-radius: 0.375rem;
+  --border-radius-lg: 0.5rem;
+  --border-color: #dee2e6;
+
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+
+  font-family:
+    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  color: var(--gray-900);
+  background: var(--white);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
 }
 
-.hero {
-  position: relative;
+/* Reset and base elements */
 
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
-}
-
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
-  width: 100%;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
-
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
-}
-.auth-panel {
-  display: block !important;
-  max-width: 760px;
-  margin: 40px auto;
-  padding: 32px;
-  background: white;
-  color: #222;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-}
-
-.auth-form {
-  display: grid;
-  gap: 16px;
-  max-width: 480px;
-}
-
-.auth-form label {
-  display: grid;
-  gap: 6px;
-  font-weight: 600;
-}
-
-.auth-form input {
-  width: 100%;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  padding: 12px;
-  border: 1px solid #bbb;
-  border-radius: 6px;
-  font: inherit;
-}
-.auth-panel {
-  max-width: 760px;
-  margin: 40px auto;
-  padding: 32px;
-  background: white;
-  color: #222;
-  border: 1px solid #ddd;
-  border-radius: 12px;
 }
 
-.auth-form {
-  display: grid;
-  gap: 16px;
-  max-width: 480px;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--navbar-height);
+}
+:root {
+  --navbar-height: 40px;
 }
 
-.auth-form label {
-  display: grid;
-  gap: 6px;
+section[id] {
+  scroll-margin-top: var(--navbar-height);
 }
-
-.auth-form input {
-  box-sizing: border-box;
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #bbb;
-  border-radius: 6px;
-  font: inherit;
-}
-
-.text-button {
-  margin-top: 16px;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  text-decoration: underline;
-  font: inherit;
-}
-
-.auth-message {
-  margin-top: 16px;
-}
-/* Access / Subcontractor navigation tabs */
-.portal-tabs {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  margin: 1.25rem 0 1.5rem;
-  padding: 0.45rem;
-  background: #f1f5f9;
-  border: 1px solid #dbe3ee;
-  border-radius: 14px;
-  width: fit-content;
-  max-width: 100%;
-}
-
-.portal-tab {
-  appearance: none;
-  border: 1px solid transparent;
-  border-radius: 10px;
-  background: transparent;
-  color: #475569;
-  cursor: pointer;
-  font: inherit;
-  font-weight: 650;
-  line-height: 1.2;
-  padding: 0.75rem 1.05rem;
-  transition:
-    background-color 160ms ease,
-    color 160ms ease,
-    border-color 160ms ease,
-    box-shadow 160ms ease,
-    transform 160ms ease;
-}
-
-.portal-tab:hover:not(.portal-tab-active) {
-  background: #e2e8f0;
-  border-color: #cbd5e1;
-  color: #1e293b;
-}
-
-.portal-tab-active {
-  background: #0f766e;
-  border-color: #0f766e;
-  box-shadow: 0 4px 10px rgba(15, 118, 110, 0.22);
-  color: #ffffff;
-}
-
-.portal-tab-active:hover {
-  background: #115e59;
-  border-color: #115e59;
-}
-
-.portal-tab:active {
-  transform: translateY(1px);
-}
-
-.portal-tab:focus-visible {
-  outline: 3px solid #38bdf8;
-  outline-offset: 3px;
-}
-
-@media (max-width: 560px) {
-  .portal-tabs {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: 100%;
-  }
-
-  .portal-tab {
-    width: 100%;
-    text-align: center;
-  }
-}
-/* --------------------------------------------------
-   Account / access page
--------------------------------------------------- */
-
-.account-page,
-.subcontractor-page {
-  width: min(100% - 2rem, 1120px);
-  margin: 0 auto;
-  padding: 1.5rem 0 3rem;
-}
-
-.account-hero,
-.subcontractor-hero {
-  margin-bottom: 1.5rem;
-  padding: 1.75rem;
-  border: 1px solid #dbe3ee;
-  border-radius: 18px;
-  background:
-    radial-gradient(circle at top right, rgba(20, 184, 166, 0.13), transparent 38%),
-    #ffffff;
-  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
-}
-
-.account-eyebrow,
-.subcontractor-eyebrow {
-  margin: 0 0 0.45rem;
-  color: #0f766e;
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-}
-
-.account-hero h1,
-.subcontractor-hero h1 {
+body {
+  min-width: 320px;
+  min-height: 100vh;
   margin: 0;
-  color: #0f172a;
-  font-size: clamp(1.7rem, 3vw, 2.35rem);
-  line-height: 1.15;
-}
-
-.account-hero p:last-child,
-.subcontractor-hero p:last-child {
-  max-width: 680px;
-  margin: 0.7rem 0 0;
-  color: #475569;
+  background: var(--white);
+  color: var(--gray-900);
+  font-family: inherit;
   font-size: 1rem;
-  line-height: 1.65;
-}
-
-.account-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.75fr);
-  gap: 1.25rem;
-}
-
-.account-card,
-.subcontractor-card,
-.subcontractor-form-card {
-  border: 1px solid #dbe3ee;
-  border-radius: 16px;
-  background: #ffffff;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
-}
-
-.account-card,
-.subcontractor-card {
-  padding: 1.5rem;
-}
-
-.account-card h2,
-.subcontractor-card h2,
-.subcontractor-form-card h2 {
-  margin: 0;
-  color: #0f172a;
-  font-size: 1.2rem;
-  line-height: 1.3;
-}
-
-.account-card > p,
-.subcontractor-card > p {
-  margin: 0.55rem 0 0;
-  color: #64748b;
-  line-height: 1.55;
-}
-
-.account-details {
-  display: grid;
-  gap: 0;
-  margin: 1.25rem 0 0;
-  overflow: hidden;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-}
-
-.account-detail {
-  display: grid;
-  grid-template-columns: 145px minmax(0, 1fr);
-  gap: 1rem;
-  padding: 0.9rem 1rem;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.account-detail:last-child {
-  border-bottom: 0;
-}
-
-.account-detail dt {
-  color: #64748b;
-  font-size: 0.88rem;
-  font-weight: 700;
-}
-
-.account-detail dd {
-  min-width: 0;
-  margin: 0;
-  overflow-wrap: anywhere;
-  color: #1e293b;
-  font-weight: 600;
-}
-
-.account-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1.25rem;
-}
-
-
-/* --------------------------------------------------
-   Shared buttons and form controls
--------------------------------------------------- */
-
-.page-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 42px;
-  border: 1px solid transparent;
-  border-radius: 10px;
-  cursor: pointer;
-  font: inherit;
-  font-weight: 750;
-  line-height: 1.2;
-  padding: 0.7rem 1rem;
-  transition:
-    background-color 160ms ease,
-    border-color 160ms ease,
-    box-shadow 160ms ease,
-    transform 160ms ease;
-}
-
-.page-button:active {
-  transform: translateY(1px);
-}
-
-.page-button-primary {
-  background: #0f766e;
-  border-color: #0f766e;
-  color: #ffffff;
-  box-shadow: 0 4px 10px rgba(15, 118, 110, 0.2);
-}
-
-.page-button-primary:hover:not(:disabled) {
-  background: #115e59;
-  border-color: #115e59;
-}
-
-.page-button-secondary {
-  background: #ffffff;
-  border-color: #cbd5e1;
-  color: #334155;
-}
-
-.page-button-secondary:hover:not(:disabled) {
-  background: #f8fafc;
-  border-color: #94a3b8;
-}
-
-.page-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.page-button:focus-visible,
-.subcontractor-form input:focus-visible,
-.subcontractor-form select:focus-visible,
-.subcontractor-form textarea:focus-visible {
-  outline: 3px solid #38bdf8;
-  outline-offset: 3px;
-}
-
-
-/* --------------------------------------------------
-   Subcontractor application page
--------------------------------------------------- */
-
-.subcontractor-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.75fr);
-  gap: 1.25rem;
-  align-items: start;
-}
-
-.subcontractor-form-card {
-  padding: 1.5rem;
-}
-
-.subcontractor-form-card > p {
-  margin: 0.55rem 0 1.4rem;
-  color: #64748b;
-  line-height: 1.55;
-}
-
-.subcontractor-form {
-  display: grid;
-  gap: 1rem;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.form-field {
-  display: grid;
-  gap: 0.45rem;
-}
-
-.form-field-full {
-  grid-column: 1 / -1;
-}
-
-.form-field label {
-  color: #334155;
-  font-size: 0.92rem;
-  font-weight: 750;
-}
-
-.form-field label span {
-  color: #dc2626;
-}
-
-.form-field input,
-.form-field select,
-.form-field textarea {
-  width: 100%;
-  border: 1px solid #cbd5e1;
-  border-radius: 10px;
-  background: #ffffff;
-  color: #0f172a;
-  font: inherit;
-  font-size: 1rem;
-  line-height: 1.4;
-  padding: 0.72rem 0.8rem;
-  transition:
-    border-color 160ms ease,
-    box-shadow 160ms ease;
-}
-
-.form-field textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-.form-field input::placeholder,
-.form-field textarea::placeholder {
-  color: #94a3b8;
-}
-
-.form-field input:hover,
-.form-field select:hover,
-.form-field textarea:hover {
-  border-color: #94a3b8;
-}
-
-.form-field input:focus,
-.form-field select:focus,
-.form-field textarea:focus {
-  border-color: #0f766e;
-  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
-  outline: none;
-}
-
-.form-help {
-  margin: 0;
-  color: #64748b;
-  font-size: 0.82rem;
-  line-height: 1.45;
-}
-
-.form-error {
-  margin: 0;
-  color: #b91c1c;
-  font-size: 0.86rem;
-  font-weight: 650;
-  line-height: 1.4;
-}
-
-
-/* --------------------------------------------------
-   Application status panel
--------------------------------------------------- */
-
-.application-status {
-  padding: 1.35rem;
-}
-
-.application-status-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.application-status h2 {
-  margin: 0;
-}
-
-.application-status > p {
-  margin: 0.55rem 0 0;
-  color: #64748b;
-  line-height: 1.55;
-}
-
-.status-badge {
-  display: inline-flex;
-  flex: 0 0 auto;
-  align-items: center;
-  border-radius: 999px;
-  font-size: 0.76rem;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  line-height: 1;
-  padding: 0.48rem 0.65rem;
-  text-transform: uppercase;
-}
-
-.status-badge-pending {
-  background: #fef3c7;
-  color: #92400e;
-}
-
-.status-badge-approved {
-  background: #dcfce7;
-  color: #166534;
-}
-
-.status-badge-rejected {
-  background: #fee2e2;
-  color: #b91c1c;
-}
-
-.status-badge-none {
-  background: #e2e8f0;
-  color: #475569;
-}
-
-.application-status-list {
-  display: grid;
-  gap: 0.8rem;
-  margin: 1.2rem 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.application-status-list li {
-  display: flex;
-  gap: 0.7rem;
-  align-items: flex-start;
-  color: #475569;
-  font-size: 0.92rem;
-  line-height: 1.5;
-}
-
-.application-status-list li::before {
-  display: grid;
-  place-items: center;
-  flex: 0 0 20px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #ccfbf1;
-  color: #0f766e;
-  content: "✓";
-  font-size: 0.75rem;
-  font-weight: 900;
-}
-
-.review-note {
-  margin: 1.2rem 0 0;
-  padding: 0.9rem 1rem;
-  border-left: 4px solid #14b8a6;
-  border-radius: 0 10px 10px 0;
-  background: #f0fdfa;
-  color: #134e4a;
-  font-size: 0.92rem;
-  line-height: 1.55;
-}
-
-
-/* --------------------------------------------------
-   Mobile layout
--------------------------------------------------- */
-
-@media (max-width: 780px) {
-  .account-page,
-  .subcontractor-page {
-    width: min(100% - 1.25rem, 1120px);
-    padding-top: 1rem;
-  }
-
-  .account-hero,
-  .subcontractor-hero,
-  .account-card,
-  .subcontractor-card,
-  .subcontractor-form-card {
-    padding: 1.15rem;
-    border-radius: 14px;
-  }
-
-  .account-grid,
-  .subcontractor-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .account-detail {
-    grid-template-columns: 1fr;
-    gap: 0.25rem;
-  }
-}
-
-@media (max-width: 440px) {
-  .application-status-header {
-    flex-direction: column;
-  }
-
-  .account-actions,
-  .subcontractor-form .page-button {
-    width: 100%;
-  }
-
-  .account-actions .page-button {
-    flex: 1 1 100%;
-  }
-}
-
-/* Account and subcontractor pages */
-.account-page,
-.subcontractor-page {
-  width: min(100% - 2rem, 1120px);
-  margin: 0 auto;
-  padding: 1.5rem 0 3rem;
-}
-
-.account-hero,
-.subcontractor-hero {
-  margin-bottom: 1.5rem;
-  padding: 1.75rem;
-  border: 1px solid #dbe3ee;
-  border-radius: 18px;
-  background:
-    radial-gradient(circle at top right, rgba(20, 184, 166, 0.13), transparent 38%),
-    #ffffff;
-  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
-}
-
-.account-eyebrow,
-.subcontractor-eyebrow {
-  margin: 0 0 0.45rem;
-  color: #0f766e;
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-}
-
-.account-hero h1,
-.subcontractor-hero h1 {
-  margin: 0;
-  color: #0f172a;
-  font-size: clamp(1.7rem, 3vw, 2.35rem);
-  line-height: 1.15;
-}
-
-.account-hero p:last-child,
-.subcontractor-hero p:last-child {
-  max-width: 680px;
-  margin: 0.7rem 0 0;
-  color: #475569;
-  line-height: 1.65;
-}
-
-.account-grid,
-.subcontractor-layout {
-  display: grid;
-  gap: 1.25rem;
-  align-items: start;
-}
-
-.account-grid {
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.75fr);
-}
-
-.subcontractor-layout {
-  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.75fr);
-}
-
-.account-card,
-.subcontractor-card,
-.subcontractor-form-card {
-  padding: 1.5rem;
-  border: 1px solid #dbe3ee;
-  border-radius: 16px;
-  background: #ffffff;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
-}
-
-.account-card h2,
-.subcontractor-card h2,
-.subcontractor-form-card h2 {
-  margin: 0;
-  color: #0f172a;
-  font-size: 1.2rem;
-}
-
-.account-card > p,
-.subcontractor-card > p,
-.subcontractor-form-card > p {
-  margin: 0.55rem 0 1.25rem;
-  color: #64748b;
-  line-height: 1.55;
-}
-
-.account-details {
-  display: grid;
-  margin: 1.25rem 0 0;
-  overflow: hidden;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-}
-
-.account-detail {
-  display: grid;
-  grid-template-columns: 145px minmax(0, 1fr);
-  gap: 1rem;
-  padding: 0.9rem 1rem;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.account-detail:last-child {
-  border-bottom: 0;
-}
-
-.account-detail dt {
-  color: #64748b;
-  font-size: 0.88rem;
-  font-weight: 700;
-}
-
-.account-detail dd {
-  min-width: 0;
-  margin: 0;
-  overflow-wrap: anywhere;
-  color: #1e293b;
-  font-weight: 600;
-}
-
-.account-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1.25rem;
-}
-
-.page-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 42px;
-  border: 1px solid transparent;
-  border-radius: 10px;
-  cursor: pointer;
-  font: inherit;
-  font-weight: 750;
-  padding: 0.7rem 1rem;
-}
-
-.page-button-primary {
-  background: #0f766e;
-  border-color: #0f766e;
-  color: #ffffff;
-  box-shadow: 0 4px 10px rgba(15, 118, 110, 0.2);
-}
-
-.page-button-primary:hover:not(:disabled) {
-  background: #115e59;
-  border-color: #115e59;
-}
-
-.page-button-secondary {
-  background: #ffffff;
-  border-color: #cbd5e1;
-  color: #334155;
-}
-
-.page-button-secondary:hover:not(:disabled) {
-  background: #f8fafc;
-  border-color: #94a3b8;
-}
-
-.page-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.subcontractor-form {
-  display: grid;
-  gap: 1rem;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.form-field {
-  display: grid;
-  gap: 0.45rem;
-}
-
-.form-field-full {
-  grid-column: 1 / -1;
-}
-
-.form-field label {
-  color: #334155;
-  font-size: 0.92rem;
-  font-weight: 750;
-}
-
-.form-field input,
-.form-field select,
-.form-field textarea {
-  width: 100%;
-  border: 1px solid #cbd5e1;
-  border-radius: 10px;
-  background: #ffffff;
-  color: #0f172a;
-  font: inherit;
-  line-height: 1.4;
-  padding: 0.72rem 0.8rem;
-}
-
-.form-field textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-.form-field input:focus,
-.form-field select:focus,
-.form-field textarea:focus {
-  border-color: #0f766e;
-  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
-  outline: none;
-}
-
-.page-button:focus-visible,
-.form-field input:focus-visible,
-.form-field select:focus-visible,
-.form-field textarea:focus-visible {
-  outline: 3px solid #38bdf8;
-  outline-offset: 3px;
-}
-
-.application-status {
-  padding: 1.35rem;
-}
-
-.application-status-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.status-badge {
-  display: inline-flex;
-  flex: 0 0 auto;
-  align-items: center;
-  border-radius: 999px;
-  font-size: 0.76rem;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  line-height: 1;
-  padding: 0.48rem 0.65rem;
-  text-transform: uppercase;
-}
-
-.status-badge-pending {
-  background: #fef3c7;
-  color: #92400e;
-}
-
-.status-badge-approved {
-  background: #dcfce7;
-  color: #166534;
-}
-
-.status-badge-rejected {
-  background: #fee2e2;
-  color: #b91c1c;
-}
-
-.status-badge-none {
-  background: #e2e8f0;
-  color: #475569;
-}
-
-.application-status-list {
-  display: grid;
-  gap: 0.8rem;
-  margin: 1.2rem 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.application-status-list li {
-  display: flex;
-  gap: 0.7rem;
-  align-items: flex-start;
-  color: #475569;
-  font-size: 0.92rem;
-  line-height: 1.5;
-}
-
-.application-status-list li::before {
-  display: grid;
-  place-items: center;
-  flex: 0 0 20px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #ccfbf1;
-  color: #0f766e;
-  content: "✓";
-  font-size: 0.75rem;
-  font-weight: 900;
-}
-
-.review-note {
-  margin: 1.2rem 0 0;
-  padding: 0.9rem 1rem;
-  border-left: 4px solid #14b8a6;
-  border-radius: 0 10px 10px 0;
-  background: #f0fdfa;
-  color: #134e4a;
-  line-height: 1.55;
-}
-
-@media (max-width: 780px) {
-  .account-page,
-  .subcontractor-page {
-    width: min(100% - 1.25rem, 1120px);
-    padding-top: 1rem;
-  }
-
-  .account-hero,
-  .subcontractor-hero,
-  .account-card,
-  .subcontractor-card,
-  .subcontractor-form-card {
-    padding: 1.15rem;
-    border-radius: 14px;
-  }
-
-  .account-grid,
-  .subcontractor-layout,
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .account-detail {
-    grid-template-columns: 1fr;
-    gap: 0.25rem;
-  }
-}
-
-@media (max-width: 440px) {
-  .application-status-header {
-    flex-direction: column;
-  }
-
-  .account-actions .page-button,
-  .subcontractor-form .page-button {
-    width: 100%;
-  }
-}
-/* Account login and registration form */
-.auth-panel .auth-form {
-  display: grid;
-  gap: 1rem;
-  margin-top: 1.25rem;
-}
-
-.auth-panel .auth-form label {
-  display: grid;
-  gap: 0.45rem;
-  color: #334155;
-  font-size: 0.92rem;
-  font-weight: 750;
-}
-
-.auth-panel .auth-form input {
-  width: 100%;
-  border: 1px solid #cbd5e1;
-  border-radius: 10px;
-  background: #ffffff;
-  color: #0f172a;
-  font: inherit;
-  line-height: 1.4;
-  padding: 0.72rem 0.8rem;
-}
-
-.auth-panel .auth-form input:focus {
-  border-color: #0f766e;
-  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
-  outline: none;
-}
-
-.auth-panel .text-button {
-  margin-top: 1rem;
-}
-/* Account and subcontractor forms */
-.account-page,
-.subcontractor-page {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-.account-form-card,
-.subcontractor-form-card {
-  width: min(100%, 820px);
-  margin: 0 auto;
-  padding: clamp(1.25rem, 4vw, 2.5rem);
-  border: 1px solid #dbe3ee;
-  border-radius: 18px;
-  background: #ffffff;
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
-}
-
-.account-form-card h2,
-.subcontractor-form-card h2 {
-  margin: 0;
-  color: #0f172a;
-  font-size: clamp(1.55rem, 3vw, 2.1rem);
-  line-height: 1.2;
-}
-
-.account-intro,
-.subcontractor-intro {
-  max-width: 660px;
-  margin: 0.75rem 0 1.5rem;
-  color: #64748b;
-  line-height: 1.6;
-}
-
-.styled-form {
-  display: grid;
-  gap: 1.15rem;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.15rem;
-}
-
-.form-field {
-  display: grid;
-  gap: 0.48rem;
-  color: #334155;
-  font-size: 0.93rem;
-  font-weight: 700;
-}
-
-.form-field-full {
-  grid-column: 1 / -1;
-}
-
-.form-field input,
-.form-field textarea {
-  box-sizing: border-box;
-  width: 100%;
-  border: 1px solid #cbd5e1;
-  border-radius: 10px;
-  background: #ffffff;
-  color: #0f172a;
-  font: inherit;
   font-weight: 400;
-  line-height: 1.4;
-  padding: 0.78rem 0.85rem;
-  transition: border-color 160ms ease, box-shadow 160ms ease;
+  line-height: 1.5;
 }
 
-.form-field textarea {
-  min-height: 110px;
-  resize: vertical;
+button,
+input,
+textarea {
+  font: inherit;
 }
 
-.form-field input::placeholder,
-.form-field textarea::placeholder {
-  color: #94a3b8;
+button {
+  cursor: pointer;
 }
 
-.form-field input:focus,
-.form-field textarea:focus {
-  border-color: #0f766e;
-  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.17);
-  outline: none;
+button:disabled {
+  cursor: not-allowed;
 }
 
-.form-field input:focus-visible,
-.form-field textarea:focus-visible,
-.page-button:focus-visible,
-.account-switch-button:focus-visible {
-  outline: 3px solid #38bdf8;
-  outline-offset: 3px;
+a {
+  color: var(--primary);
 }
 
-.required-mark {
-  color: #dc2626;
+.app {
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-.form-note {
-  margin: -0.2rem 0 0;
-  color: #64748b;
-  font-size: 0.85rem;
+/* Shared layout and typography */
+
+.section {
+  width: min(100% - 2rem, 1140px);
+  margin: 0 auto;
+  padding: 4rem 0;
+}
+.p2{
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
-.page-button {
+.eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--primary);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  color: var(--gray-900);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 5vw, 4.25rem);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+.content-section > p:not(.eyebrow),
+.highlight-section > p:not(.eyebrow),
+.contact-section > p:not(.eyebrow) {
+  max-width: 720px;
+  margin: 1rem 0 0;
+  color: var(--gray-700);
+  line-height: 1.65;
+}
+
+/* Header */
+
+.site-header {
+  position: fixed;
+  z-index: 1030;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+
+  min-height: 64px;
+  padding: 0.75rem max(1rem, calc((100% - 1140px) / 2));
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(204, 218, 173, 0.72);
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.08);
+
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.logo {
+  flex: 0 0 auto;
+  color: var(--);
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+}
+
+.logo:hover {
+  color: var(--border);
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.15rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.navigation a {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  border-radius: 10px;
-  font-weight: 750;
-  padding: 0.75rem 1.05rem;
+  min-height: 38px;
+  padding: 0.5rem 0.7rem;
+  border-radius: var(--border-radius);
+  color: var(--blue-700);
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 150ms ease, background-color 150ms ease;
 }
 
-.page-button-primary {
-  border: 1px solid #0f766e;
-  background: #0f766e;
-  color: #ffffff;
-  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.2);
+.navigation a:hover {
+  background: var(--gray-100);
+  color: var(--primary);
 }
 
+.navigation a:focus-visible,
+.logo:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem var(--primary-focus);
+}
+
+/* Buttons */
+
+.button,
+.page-button {
+  display: inline-block;
+  min-height: 42px;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--primary);
+  border-radius: var(--border-radius);
+  background: var(--primary);
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.button:hover:not(:disabled),
 .page-button-primary:hover:not(:disabled) {
-  border-color: #115e59;
-  background: #115e59;
+  border-color: var(--primary-border);
+  background: var(--primary-hover);
+  color: var(--white);
 }
 
-.page-button-secondary {
-  border: 1px solid #cbd5e1;
-  background: #ffffff;
-  color: #334155;
+.button:focus-visible,
+.page-button:focus-visible,
+.text-button:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem var(--primary-focus);
 }
 
-.page-button-secondary:hover {
-  border-color: #94a3b8;
-  background: #f8fafc;
-}
-
+.button:disabled,
 .page-button:disabled {
-  cursor: not-allowed;
   opacity: 0.65;
 }
 
-.submit-application-button {
-  justify-self: start;
-  min-width: 190px;
+.page-button-secondary {
+  border-color: var(--gray-600);
+  background: var(--gray-600);
+  color: var(--white);
 }
 
-.account-switch-button {
-  margin-top: 1rem;
+.page-button-secondary:hover:not(:disabled) {
+  border-color: #565e64;
+  background: #5c636a;
 }
+
+/* Hero */
+
+.hero {
+  width: 100%;
+  min-height: 560px;
+  padding: 5rem max(1rem, calc((100% - 1140px) / 2));
+  background:
+    linear-gradient(90deg, rgba(13, 110, 253, 0.92), rgba(8, 66, 152, 0.86)),
+    var(--primary);
+  color: var(--white);
+}
+
+.hero-content {
+  display: grid;
+  align-content: center;
+  min-height: 450px;
+  max-width: 760px;
+}
+
+.hero .eyebrow {
+  color: #cfe2ff;
+}
+
+.hero h1 {
+  max-width: 760px;
+  color: var(--white);
+}
+
+.hero p:not(.eyebrow) {
+  max-width: 700px;
+  margin: 1.25rem 0 1.75rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.hero .button {
+  width: fit-content;
+  border-color: var(--white);
+  background: var(--white);
+  color: var(--primary);
+}
+
+.hero .button:hover {
+  border-color: var(--gray-200);
+  background: var(--gray-200);
+  color: var(--primary-border);
+}
+
+/* Standard content sections */
+
+.content-section {
+  background: var(--white);
+}
+.form-note {
+  display: block;
+  margin: 0;
+  color: var(--gray-600);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.required-text {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.required-mark {
+  display: inline;
+  margin-right: 0.15rem;
+  color: #dc3545;
+  font-weight: 700;
+  vertical-align: baseline;
+}
+.highlight-section {
+  width: min(100% - 2rem, 1140px);
+  margin: 0 auto;
+  padding: 3rem;
+  border: 1px solid #b6d4fe;
+  border-radius: var(--border-radius-lg);
+  background: #cfe2ff;
+  color: #084298;
+}
+
+.highlight-section h2,
+.highlight-section > p:not(.eyebrow) {
+  color: #084298;
+}
+
+/* Services */
+
+.services-section {
+  background: var(--gray-100);
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
+
+.service-card {
+  height: 100%;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 150ms ease, transform 150ms ease;
+}
+
+.service-card:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-3px);
+}
+
+.service-card p {
+  margin: 0.75rem 0 0;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+/* Account page */
+
+#account.auth-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 68vh;
+  margin: 0;
+  padding: 3rem 1rem;
+  background: var(--gray-100);
+}
+
+.account-page {
+  width: 100%;
+}
+
+.account-form-card {
+  width: min(100%, 540px);
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.account-form-card h2 {
+  margin-bottom: 0;
+  font-size: clamp(1.65rem, 3vw, 2.15rem);
+}
+
+.account-intro {
+  margin: 0.75rem 0 1.5rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+/* Account and Subcontractor forms */
+
+.auth-form,
+.subcontractor-form {
+  display: grid;
+  width: 100%;
+  gap: 1.25rem;
+  margin: 1.5rem 0 0;
+}
+
+/* This targets Account labels and Subcontractor labels */
+
+.auth-form label,
+.subcontractor-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  color: var(--gray-900);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* Full-width fields inside the two-column subcontractor grid */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.form-field-full {
+  grid-column: 1 / -1;
+}
+
+/* Form input styles */
+
+.auth-form input,
+.subcontractor-form input,
+.subcontractor-form textarea {
+  display: block;
+  width: 100%;
+  min-height: 42px;
+  margin: 0;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--gray-400);
+  border-radius: var(--border-radius);
+  background: var(--white);
+  color: var(--gray-900);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  outline: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.subcontractor-form textarea {
+  min-height: 112px;
+  resize: vertical;
+}
+
+.auth-form input::placeholder,
+.subcontractor-form input::placeholder,
+.subcontractor-form textarea::placeholder {
+  color: var(--gray-600);
+  opacity: 1;
+}
+
+.auth-form input:hover,
+.subcontractor-form input:hover,
+.subcontractor-form textarea:hover {
+  border-color: #86b7fe;
+}
+
+.auth-form input:focus,
+.subcontractor-form input:focus,
+.subcontractor-form textarea:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem var(--primary-focus);
+}
+
+/* Form submit buttons */
+
+.auth-form .button,
+.subcontractor-form .button {
+  justify-self: start;
+  min-height: 42px;
+  margin: 0.25rem 0 0;
+  padding: 0.625rem 1.15rem;
+}
+
+/* Login/Register switch and form messages */
+
+.text-button {
+  display: inline-block;
+  margin: 1rem 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--primary);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: left;
+  text-decoration: underline;
+}
+
+.text-button:hover {
+  color: var(--primary-border);
+}
+
+.auth-message {
+  margin: 1rem 0 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid #b6d4fe;
+  border-radius: var(--border-radius);
+  background: #cfe2ff;
+  color: #084298;
+  line-height: 1.5;
+}
+
+/* Signed-in account details */
 
 .account-details {
   display: grid;
   margin: 1.5rem 0 0;
   overflow: hidden;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
 }
 
 .account-detail {
   display: grid;
-  grid-template-columns: 140px minmax(0, 1fr);
+  grid-template-columns: 135px minmax(0, 1fr);
   gap: 1rem;
-  padding: 0.9rem 1rem;
-  border-bottom: 1px solid #e2e8f0;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .account-detail:last-child {
@@ -1342,30 +581,143 @@
 }
 
 .account-detail dt {
-  color: #64748b;
-  font-size: 0.88rem;
-  font-weight: 700;
+  color: var(--gray-600);
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .account-detail dd {
   min-width: 0;
   margin: 0;
   overflow-wrap: anywhere;
-  color: #1e293b;
-  font-weight: 600;
+  color: var(--gray-900);
+  font-weight: 500;
 }
 
 .account-actions {
+  display: flex;
   margin-top: 1.25rem;
 }
 
-@media (max-width: 640px) {
-  .account-page,
-  .subcontractor-page {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+/* Subcontractor application */
+
+#subcontractor.subcontractor-page {
+  width: min(100% - 2rem, 1140px);
+  margin: 0 auto;
+  padding: 4rem 0;
+  background: var(--gray-100);
+}
+
+.subcontractor-form-card {
+  width: min(100%, 900px);
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.subcontractor-form-card h2 {
+  margin-bottom: 0;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+}
+
+.subcontractor-intro {
+  max-width: 700px;
+  margin: 0.75rem 0 1.5rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+.required-mark {
+  color: #dc3545;
+}
+
+.form-note {
+  margin: 0;
+  color: var(--gray-600);
+  font-size: 0.875rem;
+}
+
+.submit-application-button {
+  min-width: 190px;
+}
+
+/* Contact and footer */
+
+.contact-section {
+  padding-bottom: 5rem;
+}
+
+.contact-section p:not(.eyebrow) {
+  margin-top: 0.5rem;
+}
+
+.site-footer {
+  padding: 1.5rem 1rem;
+  background: var(--gray-900);
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Responsive layout */
+
+@media (max-width: 991.98px) {
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
+  .navigation {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero {
+    min-height: 510px;
+  }
+
+  .hero-content {
+    min-height: 410px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .section {
+    width: min(100% - 1.5rem, 1140px);
+    padding: 3rem 0;
+  }
+
+  .hero {
+    min-height: 460px;
+    padding: 3.5rem 1rem;
+  }
+
+  .hero-content {
+    min-height: 360px;
+  }
+
+  .hero p:not(.eyebrow) {
+    font-size: 1rem;
+  }
+
+  .highlight-section {
+    width: min(100% - 1.5rem, 1140px);
+    padding: 1.5rem;
+  }
+
+  .service-grid,
   .form-grid {
     grid-template-columns: 1fr;
   }
@@ -1374,13 +726,46 @@
     grid-column: auto;
   }
 
-  .submit-application-button {
-    justify-self: stretch;
+  #account.auth-panel {
+    min-height: auto;
+    padding: 2rem 0.75rem;
+  }
+
+  #subcontractor.subcontractor-page {
+    padding: 2.5rem 0.75rem;
+  }
+
+  .account-form-card,
+  .subcontractor-form-card {
+    padding: 1.25rem;
+  }
+
+  .auth-form .button,
+  .subcontractor-form .button {
     width: 100%;
+    justify-self: stretch;
   }
 
   .account-detail {
     grid-template-columns: 1fr;
     gap: 0.25rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .site-header {
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+  }
+
+  .navigation a {
+    padding: 0.4rem 0.55rem;
+    font-size: 0.84rem;
+  }
+
+  .account-form-card,
+  .subcontractor-form-card,
+  .highlight-section {
+    border-radius: var(--border-radius);
   }
 }

@@ -72,9 +72,22 @@ async function updateSubcontractorApplicationStatus(
   return result;
 }
 
+async function deleteSubcontractorApplication(applicationId) {
+  if (!ObjectId.isValid(applicationId)) {
+    return null;
+  }
+
+  const result = await subcontractorsCollection().findOneAndDelete({
+    _id: new ObjectId(applicationId)
+  });
+
+  return result;
+}
+
 module.exports = {
   initializeSubcontractorCollection,
   createSubcontractorApplication,
   listSubcontractorApplications,
-  updateSubcontractorApplicationStatus
+  updateSubcontractorApplicationStatus,
+  deleteSubcontractorApplication
 };

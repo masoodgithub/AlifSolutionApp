@@ -1,6 +1,7 @@
 const {
   listSubcontractorApplications,
-  updateSubcontractorApplicationStatus
+  updateSubcontractorApplicationStatus,
+  deleteSubcontractorApplication
 } = require("../models/subcontractorModel");
 
 async function getSubcontractorApplications(req, res) {
@@ -10,7 +11,8 @@ async function getSubcontractorApplications(req, res) {
     const allowedStatuses = [
       "pending",
       "approved",
-      "rejected"
+      "rejected",
+      "blacklisted"
     ];
 
     if (status && !allowedStatuses.includes(status)) {
@@ -45,10 +47,18 @@ async function reviewSubcontractorApplication(req, res) {
     const { applicationId } = req.params;
     const { status, reviewNote } = req.body;
 
-    if (!["approved", "rejected"].includes(status)) {
+    const allowedReviewStatuses = [
+      "pending",
+      "approved",
+      "rejected",
+      "blacklisted"
+    ];
+
+    if (!allowedReviewStatuses.includes(status)) {
       return res.status(400).json({
         success: false,
-        message: "Status must be approved or rejected."
+        message:
+          "Status must be pending, approved, rejected, or blacklisted."
       });
     }
 
@@ -84,7 +94,40 @@ async function reviewSubcontractorApplication(req, res) {
   }
 }
 
+async function deleteSubcontractorApplicationById(req, res) {
+  try {
+    const { applicationId } = req.params;
+
+    const deletedApplication =
+      await deleteSubcontractorApplication(applicationId);
+
+    if (!deletedApplication) {
+      return res.status(404).json({
+        success: false,
+        message: "Subcontractor application not found."
+      });
+    }
+
+    res.json({
+      success: true,
+      message: "Subcontractor application deleted.",
+      application: deletedApplication
+    });
+  } catch (error) {
+    console.error(
+      "Deleting subcontractor application failed:",
+      error.message
+    );
+
+    res.status(500).json({
+      success: false,
+      message: "Unable to delete subcontractor application."
+    });
+  }
+}
+
 module.exports = {
   getSubcontractorApplications,
-  reviewSubcontractorApplication
+  reviewSubcontractorApplication,
+  deleteSubcontractorApplicationById
 };
