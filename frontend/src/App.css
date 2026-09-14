@@ -1206,3 +1206,100 @@ h3 {
     flex-direction: column;
   }
 }
+/* Contact Us */
+.contact-section {
+  text-align: center;
+}
+
+.contact-section h2 {
+  margin-bottom: 0.8rem;
+}
+
+.contact-intro {
+  max-width: 650px;
+  margin: 0 auto;
+  color: var(--gray-600);
+  line-height: 1.7;
+}
+
+.contact-email-button {
+  display: inline-block;
+  margin-top: 1.25rem;
+  padding: 0.8rem 1.35rem;
+  border-radius: var(--border-radius);
+  background: var(--primary-color);
+  color: var(--white);
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.contact-email-button:hover,
+.contact-email-button:focus-visible {
+  background: var(--primary-dark);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.contact-email-button:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  max-width: 900px;
+  margin: 2rem auto 0;
+  text-align: left;
+}
+
+.contact-card {
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-card h3 {
+  margin: 0 0 0.85rem;
+  color: var(--gray-900);
+  font-size: 1.05rem;
+}
+
+.contact-card p {
+  margin: 0.75rem 0 0;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+.contact-card a {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.contact-card a:hover,
+.contact-card a:focus-visible {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+.contact-card a:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (max-width: 680px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    padding: 1.25rem;
+  }
+}

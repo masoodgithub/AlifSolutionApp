@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import ApplicationDocuments from "./components/ApplicationDocuments";
+import ContactUs from "./components/ContactUs";
 
 const API_BASE_URL = "http://localhost:5000";
 const IDLE_LOGOUT_MS = 15 * 60 * 1000;
@@ -1374,15 +1375,7 @@ function App() {
           </button>
         </section>
 
-        <section id="contact" className="section contact-section p2">
-          <p className="eyebrow">Contact Us</p>
-
-          <h2>Let’s discuss your property needs</h2>
-
-          <p>21785 Baldwin Sq, Sterling, Virginia, USA</p>
-          <p>Phone: 760-780-2603</p>
-          <p>Email: alifbdus@gmail.com</p>
-        </section>
+        <ContactUs apiBaseUrl={API_BASE_URL} />
       </main>
 
       <footer className="site-footer">

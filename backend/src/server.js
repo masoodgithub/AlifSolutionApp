@@ -23,7 +23,7 @@ const {
 const subcontractorRoutes = require("./routes/subcontractorRoutes");
 const documentRoutes = require("./routes/documentRoutes");
 const subcontractorAdminRoutes = require("./routes/subcontractorAdminRoutes");
-
+const contactRoutes = require("./routes/contactRoutes");
 const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
 
@@ -48,6 +48,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/subcontractors", subcontractorRoutes);
 app.use("/api/documents", documentRoutes);
+app.use("/api/contact", contactRoutes);
 app.use(
   "/api/admin/subcontractors",
   subcontractorAdminRoutes
