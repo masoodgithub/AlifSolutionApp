@@ -1,6 +1,10 @@
 const {
-  createSubcontractorApplication
+  createSubcontractorApplication,
+  findSubcontractorApplicationByEmail
 } = require("../models/subcontractorModel");
+const {
+  findUserById
+} = require("../models/userModel");
 
 async function submitSubcontractorApplication(req, res) {
   try {
@@ -54,7 +58,53 @@ async function submitSubcontractorApplication(req, res) {
     });
   }
 }
+async function getMySubcontractorApplication(req, res) {
+  try {
+    const userId = req.user?.userId;
 
+    if (!userId) {
+      return res.status(401).json({
+        success: false,
+        message: "Authenticated user ID is not available."
+      });
+    }
+
+    const user = await findUserById(userId);
+
+    if (!user) {
+      return res.status(401).json({
+        success: false,
+        message: "Authenticated user was not found."
+      });
+    }
+
+    const application =
+      await findSubcontractorApplicationByEmail(user.email);
+
+    if (!application) {
+      return res.status(404).json({
+        success: false,
+        message: "No subcontractor application was found for this account."
+      });
+    }
+
+    res.json({
+      success: true,
+      application
+    });
+  } catch (error) {
+    console.error(
+      "Loading current subcontractor application failed:",
+      error.message
+    );
+
+    res.status(500).json({
+      success: false,
+      message: "Unable to load your subcontractor application."
+    });
+  }
+}
 module.exports = {
-  submitSubcontractorApplication
+  submitSubcontractorApplication,
+  getMySubcontractorApplication
 };

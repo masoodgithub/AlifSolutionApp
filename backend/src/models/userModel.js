@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const { getDatabase } = require("../config/database");
+const { ObjectId } = require("mongodb");
 
 function usersCollection() {
   return getDatabase().collection("users");
@@ -62,10 +63,20 @@ async function verifyUserPassword(email, password) {
 
   return user;
 }
+async function findUserById(userId) {
+  if (!ObjectId.isValid(userId)) {
+    return null;
+  }
+
+  return usersCollection().findOne({
+    _id: new ObjectId(userId)
+  });
+}
 
 module.exports = {
   initializeUserCollection,
   findUserByEmail,
   verifyUserPassword,
-  createUser
+  createUser,
+  findUserById
 };

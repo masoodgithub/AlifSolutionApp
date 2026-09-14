@@ -45,6 +45,11 @@ async function listSubcontractorApplications(status) {
     .sort({ createdAt: -1 })
     .toArray();
 }
+async function findSubcontractorApplicationByEmail(email) {
+  return subcontractorsCollection().findOne({
+    email: email.toLowerCase().trim()
+  });
+}
 
 async function updateSubcontractorApplicationStatus(
   applicationId,
@@ -89,5 +94,6 @@ module.exports = {
   createSubcontractorApplication,
   listSubcontractorApplications,
   updateSubcontractorApplicationStatus,
-  deleteSubcontractorApplication
+  deleteSubcontractorApplication,
+  findSubcontractorApplicationByEmail
 };

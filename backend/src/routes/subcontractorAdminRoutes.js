@@ -3,7 +3,8 @@ const express = require("express");
 const {
   getSubcontractorApplications,
   reviewSubcontractorApplication,
-  deleteSubcontractorApplicationById
+  deleteSubcontractorApplicationById,
+  getMySubcontractorApplication
 } = require("../controllers/subcontractorAdminController");
 
 const { requireAuth } = require("../middleware/authMiddleware");
@@ -15,7 +16,10 @@ router.use(requireAuth);
 router.use(requireRole("admin"));
 
 router.get("/", getSubcontractorApplications);
-
+router.get(
+  "/my-application",
+  getMySubcontractorApplication
+);
 router.patch(
   "/:applicationId",
   reviewSubcontractorApplication

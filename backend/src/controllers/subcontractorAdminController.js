@@ -1,5 +1,6 @@
 const {
   listSubcontractorApplications,
+  findSubcontractorApplicationByEmail,
   updateSubcontractorApplicationStatus,
   deleteSubcontractorApplication
 } = require("../models/subcontractorModel");
@@ -125,9 +126,46 @@ async function deleteSubcontractorApplicationById(req, res) {
     });
   }
 }
+async function getMySubcontractorApplication(req, res) {
+  try {
+    const email = req.user?.email;
 
+    if (!email) {
+      return res.status(401).json({
+        success: false,
+        message: "Authenticated user email is not available."
+      });
+    }
+
+    const application =
+      await findSubcontractorApplicationByEmail(email);
+
+    if (!application) {
+      return res.status(404).json({
+        success: false,
+        message: "No subcontractor application was found for this account."
+      });
+    }
+
+    res.json({
+      success: true,
+      application
+    });
+  } catch (error) {
+    console.error(
+      "Loading current subcontractor application failed:",
+      error.message
+    );
+
+    res.status(500).json({
+      success: false,
+      message: "Unable to load your subcontractor application."
+    });
+  }
+}
 module.exports = {
   getSubcontractorApplications,
   reviewSubcontractorApplication,
-  deleteSubcontractorApplicationById
+  deleteSubcontractorApplicationById,
+  getMySubcontractorApplication
 };

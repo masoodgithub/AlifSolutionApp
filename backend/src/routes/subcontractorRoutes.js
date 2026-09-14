@@ -1,10 +1,17 @@
 const express = require("express");
 const {
-  submitSubcontractorApplication
+  submitSubcontractorApplication,
+  getMySubcontractorApplication
 } = require("../controllers/subcontractorController");
 
-const router = express.Router();
+const { requireAuth } = require("../middleware/authMiddleware");
 
+const router = express.Router();
+router.get(
+  "/my-application",
+  requireAuth,
+  getMySubcontractorApplication
+);
 router.post("/apply", submitSubcontractorApplication);
 
 module.exports = router;
