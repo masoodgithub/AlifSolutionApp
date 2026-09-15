@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import ApplicationDocuments from "./components/ApplicationDocuments";
 import ContactUs from "./components/ContactUs";
-
+import CustomerReviews from "./components/CustomerReviews";
 
 const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL || "https://api.ascsusbd.com";
@@ -1361,23 +1361,7 @@ function App() {
             )}
           </div>
         </section>
-
-        <section id="reviews" className="section highlight-section">
-          <p className="eyebrow">Customer Reviews</p>
-
-          <h2>Share your experience</h2>
-
-          <p>
-            Customers will be able to submit reviews without creating an
-            account. Review information will be stored securely for future
-            contact and company response.
-          </p>
-
-          <button className="button" type="button">
-            Review form will be added
-          </button>
-        </section>
-
+        <CustomerReviews apiBaseUrl={API_BASE_URL} />
         <ContactUs apiBaseUrl={API_BASE_URL} />
       </main>
 
