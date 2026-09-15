@@ -8,10 +8,12 @@ function ContactUs({ apiBaseUrl }) {
     message: "",
     website: "",
   });
+
   const [status, setStatus] = useState({
     type: "",
     message: "",
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (event) => {
@@ -25,6 +27,7 @@ function ContactUs({ apiBaseUrl }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     setStatus({ type: "", message: "" });
     setIsSubmitting(true);
 
@@ -45,8 +48,9 @@ function ContactUs({ apiBaseUrl }) {
 
       setStatus({
         type: "success",
-        message: result.message,
+        message: result.message || "Your message has been sent successfully.",
       });
+
       setFormData({
         name: "",
         email: "",
@@ -57,7 +61,8 @@ function ContactUs({ apiBaseUrl }) {
     } catch (error) {
       setStatus({
         type: "error",
-        message: error.message || "Unable to send your message. Please try again.",
+        message:
+          error.message || "Unable to send your message. Please try again.",
       });
     } finally {
       setIsSubmitting(false);
@@ -68,7 +73,7 @@ function ContactUs({ apiBaseUrl }) {
     <section id="contact" className="section contact-section p2">
       <p className="eyebrow">Contact Us</p>
 
-      <h2>Let's discuss your property needs</h2>
+      <h2>Let&apos;s discuss your property needs</h2>
 
       <p className="contact-intro">
         Send us a message and our team will get back to you as soon as possible.
@@ -84,7 +89,7 @@ function ContactUs({ apiBaseUrl }) {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                maxLength="100"
+                maxLength={100}
                 autoComplete="name"
                 required
               />
@@ -97,7 +102,7 @@ function ContactUs({ apiBaseUrl }) {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                maxLength="254"
+                maxLength={254}
                 autoComplete="email"
                 required
               />
@@ -111,7 +116,7 @@ function ContactUs({ apiBaseUrl }) {
               name="subject"
               value={formData.subject}
               onChange={handleChange}
-              maxLength="150"
+              maxLength={150}
               required
             />
           </label>
@@ -122,8 +127,8 @@ function ContactUs({ apiBaseUrl }) {
               name="message"
               value={formData.message}
               onChange={handleChange}
-              maxLength="5000"
-              rows="6"
+              maxLength={5000}
+              rows={6}
               required
             />
           </label>
@@ -135,7 +140,7 @@ function ContactUs({ apiBaseUrl }) {
               name="website"
               value={formData.website}
               onChange={handleChange}
-              tabIndex="-1"
+              tabIndex={-1}
               autoComplete="off"
             />
           </label>
@@ -161,7 +166,7 @@ function ContactUs({ apiBaseUrl }) {
 
         <aside className="contact-details" aria-label="Contact information">
           <article className="contact-card">
-            <h3>General & Support</h3>
+            <h3>General &amp; Support</h3>
             <a href="mailto:support@ascsusbd.com">
               support@ascsusbd.com
             </a>
@@ -169,6 +174,7 @@ function ContactUs({ apiBaseUrl }) {
 
           <article className="contact-card">
             <h3>Operations</h3>
+
             <p>
               Max Davis
               <br />
@@ -176,6 +182,7 @@ function ContactUs({ apiBaseUrl }) {
                 max.davis@ascsusbd.com
               </a>
             </p>
+
             <p>
               Javier Charles
               <br />
@@ -195,11 +202,11 @@ function ContactUs({ apiBaseUrl }) {
           <article className="contact-card">
             <h3>Website</h3>
             <a
-              href="https://www.ascsusbd.com"
+              href="https://ascsusbd.com"
               target="_blank"
               rel="noreferrer"
             >
-              Visit www.ascsusbd.com
+              Visit ascsusbd.com
             </a>
           </article>
         </aside>

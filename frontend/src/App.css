@@ -1416,3 +1416,51 @@ h3 {
     padding: 1.1rem;
   }
 }
+/* Temporary force-fix: makes Contact form button visible */
+.contact-form {
+  display: flex !important;
+  flex-direction: column !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.contact-submit-button {
+  display: block !important;
+  position: relative !important;
+  z-index: 100 !important;
+  width: 100% !important;
+  min-height: 52px !important;
+  height: auto !important;
+  margin: 24px 0 16px !important;
+  padding: 14px 20px !important;
+  overflow: visible !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: none !important;
+  border: 2px solid #ffffff !important;
+  border-radius: 8px !important;
+  background: #0b5ed7 !important;
+  color: #ffffff !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  cursor: pointer !important;
+}
+
+.contact-submit-button:hover:not(:disabled) {
+  background: #084298 !important;
+}
+
+.contact-submit-button:disabled {
+  opacity: 0.65 !important;
+  cursor: wait !important;
+}
+
+.contact-honeypot {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
