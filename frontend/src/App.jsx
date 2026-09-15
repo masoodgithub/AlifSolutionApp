@@ -3,8 +3,10 @@ import "./App.css";
 import ApplicationDocuments from "./components/ApplicationDocuments";
 import ContactUs from "./components/ContactUs";
 
+
 const API_BASE_URL =
- import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+  import.meta.env.VITE_API_BASE_URL || "https://api.ascsusbd.com";
+
 const IDLE_LOGOUT_MS = 15 * 60 * 1000;
 
 const services = [
