@@ -1,71 +1,69 @@
-
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
-
-require("dotenv").config();
 const cors = require("cors");
 
-const {
-  connectDatabase,
-  getDatabase
-} = require("./config/database");
+require("dotenv").config();
 
+const { connectDatabase, getDatabase } = require("./config/database");
+
+const { initializeUserCollection } = require("./models/userModel");
 const {
-  initializeUserCollection
-} = require("./models/userModel");
-const {
-  initializeSubcontractorCollection
+  initializeSubcontractorCollection,
 } = require("./models/subcontractorModel");
-const {
-  initializeDocumentCollection
-} = require("./models/documentModel");
-const subcontractorRoutes = require("./routes/subcontractorRoutes");
-const documentRoutes = require("./routes/documentRoutes");
-const subcontractorAdminRoutes = require("./routes/subcontractorAdminRoutes");
-const contactRoutes = require("./routes/contactRoutes");
+const { initializeDocumentCollection } = require("./models/documentModel");
+
 const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
+const subcontractorRoutes = require("./routes/subcontractorRoutes");
+const documentRoutes = require("./routes/documentRoutes");
+const contactRoutes = require("./routes/contactRoutes");
+const subcontractorAdminRoutes = require("./routes/subcontractorAdminRoutes");
 
 const app = express();
+const PORT = process.env.PORT || 5000;
+
 const uploadsDirectory = path.join(process.cwd(), "uploads");
 
 if (!fs.existsSync(uploadsDirectory)) {
   fs.mkdirSync(uploadsDirectory, { recursive: true });
 }
 
-app.use("/uploads", express.static(uploadsDirectory));
-const PORT = process.env.PORT || 5000;
-
-app.use(express.json());
 const allowedOrigins = [
   "http://localhost:5173",
-  "http://localhost:5174",
+  "http://localhost:3000",
+  "https://ascsusbd.smimtiaj.workers.dev",
   "https://ascsusbd.com",
   "https://www.ascsusbd.com",
 ];
 
 app.use(
   cors({
-    origin(origin, callback) {
+    origin: (origin, callback) => {
+      // Allows Render health checks, Postman, server-to-server calls,
+      // and requests without a browser Origin header.
       if (!origin || allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
 
-      return callback(new Error("Not allowed by CORS"));
+      return callback(new Error(`CORS blocked for origin: ${origin}`));
     },
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
+
+app.use(express.json());
+
+app.use("/uploads", express.static(uploadsDirectory));
+
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/subcontractors", subcontractorRoutes);
 app.use("/api/documents", documentRoutes);
 app.use("/api/contact", contactRoutes);
-app.use(
-  "/api/admin/subcontractors",
-  subcontractorAdminRoutes
-);
+app.use("/api/admin/subcontractors", subcontractorAdminRoutes);
 
 app.get("/health", async (req, res) => {
   try {
@@ -75,7 +73,7 @@ app.get("/health", async (req, res) => {
     res.json({
       status: "ok",
       service: "alif-backend",
-      database: "connected"
+      database: "connected",
     });
   } catch (error) {
     console.error("Database health check failed:", error.message);
@@ -83,7 +81,7 @@ app.get("/health", async (req, res) => {
     res.status(503).json({
       status: "error",
       service: "alif-backend",
-      database: "disconnected"
+      database: "disconnected",
     });
   }
 });
@@ -94,12 +92,13 @@ async function startServer() {
     await initializeUserCollection();
     await initializeSubcontractorCollection();
     await initializeDocumentCollection();
-console.log("Users collection initialized");
-console.log("Subcontractor collection initialized");
-console.log("Documents collection initialized");
-    
+
+    console.log("Users collection initialized");
+    console.log("Subcontractor collection initialized");
+    console.log("Documents collection initialized");
+
     app.listen(PORT, () => {
-      console.log(`Backend running on http://localhost:${PORT}`);
+      console.log(`Backend running on port ${PORT}`);
     });
   } catch (error) {
     console.error("MongoDB connection failed:", error.message);
