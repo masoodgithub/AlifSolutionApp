@@ -38,12 +38,25 @@ app.use("/uploads", express.static(uploadsDirectory));
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
-app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "http://localhost:5174"
-  ]
-}));
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "https://ascsusbd.com",
+  "https://www.ascsusbd.com",
+];
+
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
+  })
+);
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/subcontractors", subcontractorRoutes);
