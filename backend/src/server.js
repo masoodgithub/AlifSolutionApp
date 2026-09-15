@@ -12,9 +12,13 @@ const {
   initializeSubcontractorCollection,
 } = require("./models/subcontractorModel");
 const { initializeDocumentCollection } = require("./models/documentModel");
+const {
+  initializeReviewCollection,
+} = require("./models/reviewModel");
 
 const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
+const reviewRoutes = require("./routes/reviewRoutes");
 const subcontractorRoutes = require("./routes/subcontractorRoutes");
 const documentRoutes = require("./routes/documentRoutes");
 const contactRoutes = require("./routes/contactRoutes");
@@ -63,6 +67,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/subcontractors", subcontractorRoutes);
 app.use("/api/documents", documentRoutes);
 app.use("/api/contact", contactRoutes);
+app.use("/api/reviews", reviewRoutes);
 app.use("/api/admin/subcontractors", subcontractorAdminRoutes);
 
 app.get("/health", async (req, res) => {
@@ -92,11 +97,11 @@ async function startServer() {
     await initializeUserCollection();
     await initializeSubcontractorCollection();
     await initializeDocumentCollection();
-
+    await initializeReviewCollection();
     console.log("Users collection initialized");
     console.log("Subcontractor collection initialized");
     console.log("Documents collection initialized");
-
+    console.log("Reviews collection initialized");
     app.listen(PORT, () => {
       console.log(`Backend running on port ${PORT}`);
     });
