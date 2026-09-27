@@ -166,6 +166,18 @@ function ContactUs({ apiBaseUrl }) {
 
         <aside className="contact-details" aria-label="Contact information">
           <article className="contact-card">
+            <h3>Vendor Management</h3>
+            <a href="mailto:vendor@ascsusbd.com">
+              vendor@ascsusbd.com
+            </a>
+          </article>
+          <article className="contact-card">
+            <h3>Client Relations</h3>
+            <a href="mailto:client@ascsusbd.com">
+              client@ascsusbd.com
+            </a>
+          </article>
+          <article className="contact-card">
             <h3>General &amp; Support</h3>
             <a href="mailto:support@ascsusbd.com">
               support@ascsusbd.com
@@ -190,6 +202,7 @@ function ContactUs({ apiBaseUrl }) {
                 javier.charles@ascsusbd.com
               </a>
             </p>
+            <p>Tel : 571 619 9177</p>
           </article>
 
           <article className="contact-card">
