@@ -3,6 +3,7 @@ import "./App.css";
 import ApplicationDocuments from "./components/ApplicationDocuments";
 import ContactUs from "./components/ContactUs";
 import CustomerReviews from "./components/CustomerReviews";
+import alifLogo from "./assets/image_f0f9527a.jpg";
 
 const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL || "https://api.ascsusbd.com";
@@ -677,8 +678,12 @@ function App() {
   return (
     <div className="app">
       <header className="site-header">
-        <a className="logo" href="#home" aria-label="Alif home">
-          ALIF
+        <a className="" href="#home" aria-label="Alif home">
+        <img
+    className="navbar-logo"
+    src={alifLogo}
+    alt="ALIF Solutions"
+  />
         </a>
 
         <nav className="navigation" aria-label="Main navigation">
@@ -688,7 +693,7 @@ function App() {
           <a href="#areas">Service Areas</a>
           <a href="#subcontractor">Subcontractors</a>
           <a href="#reviews">Reviews</a>
-          <a href="#account">Account</a>
+          <a href="#account">Account</a> 
           <a href="#contact">Contact Us</a>
         </nav>
       </header>
